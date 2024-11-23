@@ -58,10 +58,10 @@ const AchievementsSection = () => {
                     {achievements.map((achievement, index) => (
                         <div
                             key={index}
-                            className="p-8 space-y-4 text-center transition duration-300 bg-white shadow-md rounded-xl hover:shadow-lg"
+                            className="p-8 space-y-4 text-center transition-all duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-blue-100 hover:to-purple-200"
                         >
                             {/* Icon */}
-                            <div className="inline-block p-4 bg-gray-100 rounded-full">
+                            <div className="inline-block p-6 rounded-full shadow-md bg-gradient-to-r from-blue-200 to-pink-100">
                                 {achievement.icon}
                             </div>
 

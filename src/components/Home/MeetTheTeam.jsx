@@ -21,6 +21,26 @@ const executiveMembers = [
         position: "Vice President",
         image: "https://via.placeholder.com/150",
     },
+    {
+        name: "Daniel Brown",
+        position: "Chief Technology Officer",
+        image: "https://via.placeholder.com/150",
+    },
+    {
+        name: "Sophia Turner",
+        position: "Chief Marketing Officer",
+        image: "https://via.placeholder.com/150",
+    },
+    {
+        name: "David Wilson",
+        position: "Chief Operating Officer",
+        image: "https://via.placeholder.com/150",
+    },
+    {
+        name: "Olivia Moore",
+        position: "Head of HR",
+        image: "https://via.placeholder.com/150",
+    },
 ];
 
 const MeetTheTeam = () => {
@@ -28,7 +48,7 @@ const MeetTheTeam = () => {
         <div className="py-16">
             <div className="container mx-auto text-center">
                 <h2 className="mb-8 text-3xl font-bold text-gray-800">Meet The Team</h2>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
                     {executiveMembers.map((member, index) => (
                         <motion.div
                             key={index}
@@ -36,6 +56,18 @@ const MeetTheTeam = () => {
                             whileHover={{
                                 scale: 1.05,
                                 transition: { duration: 0.4 },
+                            }}
+                            whileTap={{
+                                scale: 0.98,
+                            }}
+                            animate={{
+                                x: ["-10%", "10%", "-10%"], // Floating left-right motion
+                                y: ["0%", "-5%", "0%"], // Floating up and down
+                            }}
+                            transition={{
+                                duration: 8, // Cycle duration for floating
+                                repeat: Infinity, // Infinite loop
+                                ease: "easeInOut",
                             }}
                         >
                             <img
