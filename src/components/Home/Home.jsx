@@ -4,6 +4,7 @@ import AchievementSlider from "./AchievementSlider";
 import AboutSection from "./AboutSection";
 import AchievmentsSection from "./AchievmentsSection";
 import JoinSection from "./JoinSection";
+import MeetTheTeam from "./MeetTheTeam";
 
 const Home = () => {
     const [bgColor, setBgColor] = useState("#f3e8ff"); // Initial background color
@@ -67,6 +68,7 @@ const Home = () => {
                 <div ref={joinRef}>
                     <JoinSection />
                 </div>
+                <MeetTheTeam/>
             </div>
         </motion.div>
     );
