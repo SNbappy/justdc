@@ -1,113 +1,154 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-const CardSlider = () => {
-    const [positionIndexes, setPositionIndexes] = useState([0, 1, 2, 3, 4]);
+const JoinSection = () => {
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true });
 
-    const handleCardClick = (clickedIndex) => {
-        const centerIndex = positionIndexes.indexOf(0); // Current center index
-        const shift = clickedIndex - centerIndex;
-
-        setPositionIndexes((prevIndexes) =>
-            prevIndexes.map((index) => (index - shift + 5) % 5)
-        );
+    const cardVariants = {
+        hidden: { opacity: 0, y: 100, scale: 0.9 },
+        visible: (index) => ({
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                delay: index * 0.3, // Stagger for engaging animation
+                duration: 0.8,
+                type: "spring",
+                stiffness: 120,
+            },
+        }),
+        hover: {
+            scale: 1.05,
+            rotate: 2, // Slight rotation for depth
+            transition: {
+                duration: 0.3,
+                type: "spring",
+            },
+        },
     };
 
     const cards = [
         {
             id: 1,
-            title: "Community of Thinkers",
+            title: "🎓 Who can join?",
             description:
-                "Connect with like-minded individuals passionate about debating and intellectual growth.",
-            bgGradient: "from-blue-500 to-indigo-600",
+                "Students from all departments who are eager to learn, debate, and grow are welcome to join! No experience is necessary—just a passion for learning and engaging in meaningful discussions.",
+            gradient: "from-blue-500 to-blue-300",
         },
         {
             id: 2,
-            title: "Sharpen Your Skills",
-            description:
-                "Develop confidence, enhance critical thinking, and master persuasion in a supportive environment.",
-            bgGradient: "from-green-500 to-teal-600",
+            title: "🌟 Why join JUSTDC?",
+            description: `
+        * Boost your confidence and communication skills
+        * Engage in exciting debates and discussions
+        * Meet like-minded individuals and build lifelong friendships
+        * Represent JUST in inter-university and World debate competitions`,
+            gradient: "from-purple-500 to-pink-500",
         },
         {
             id: 3,
-            title: "Celebrate Achievements",
-            description:
-                "Participate in exciting competitions and celebrate your progress as a debater.",
-            bgGradient: "from-yellow-500 to-orange-600",
-        },
-        {
-            id: 4,
-            title: "Expand Your Knowledge",
-            description:
-                "Dive into diverse topics and explore new perspectives to broaden your worldview.",
-            bgGradient: "from-purple-500 to-pink-600",
-        },
-        {
-            id: 5,
-            title: "Foster Creativity",
-            description:
-                "Learn to think on your feet and present ideas creatively, fostering innovation and adaptability.",
-            bgGradient: "from-red-500 to-pink-500",
+            title: "📅 How to Apply?",
+            description: `
+        1. Fill out the registration form (available at the JUSTDC Office)
+        2. Join our introductory session on campus to learn more`,
+            gradient: "from-teal-500 to-cyan-500",
+            link: {
+                text: "Register Now",
+                href: "#",
+            },
         },
     ];
 
-    const positions = ["center", "left1", "left", "right", "right1"];
-
-    const cardVariants = {
-        center: { x: "0%", scale: 1, zIndex: 5, opacity: 1 },
-        left1: { x: "-50%", scale: 0.8, zIndex: 3, opacity: 0.8 },
-        left: { x: "-90%", scale: 0.6, zIndex: 2, opacity: 0.6 },
-        right: { x: "90%", scale: 0.6, zIndex: 2, opacity: 0.6 },
-        right1: { x: "50%", scale: 0.8, zIndex: 3, opacity: 0.8 },
-    };
-
-    // Handle swipe actions
-    const handleSwipe = (direction) => {
-        setPositionIndexes((prevIndexes) => {
-            const updatedIndexes = [...prevIndexes];
-            if (direction === "left") {
-                updatedIndexes.push(updatedIndexes.shift()); // Move to next card
-            } else if (direction === "right") {
-                updatedIndexes.unshift(updatedIndexes.pop()); // Move to previous card
-            }
-            return updatedIndexes;
-        });
-    };
-
     return (
-        <div className="flex items-center justify-center h-screen overflow-hidden bg-gradient-to-r from-blue-50 via-white to-blue-50">
-            <div className="relative w-full max-w-[1200px] h-[80vh] sm:h-[70vh] flex justify-center items-center">
-                {cards.map((card, index) => (
-                    <motion.div
-                        key={card.id}
-                        className={`absolute w-[90%] sm:w-[70%] lg:w-[300px] max-w-[300px] h-[50%] sm:h-[55%] lg:h-[400px] p-4 sm:p-6 text-white rounded-xl shadow-lg bg-gradient-to-r ${card.bgGradient} flex flex-col items-center justify-center text-center cursor-pointer`}
-                        initial="center"
-                        animate={positions[positionIndexes[index]]}
-                        variants={cardVariants}
-                        transition={{ duration: 0.5 }}
-                        onClick={() => handleCardClick(index)} // Move clicked card to the center
-                        drag="x" // Enable dragging in the x direction
-                        dragConstraints={{ left: -200, right: 200 }} // Set constraints for dragging
-                        onDragEnd={(event, info) => {
-                            // Detect swipe direction based on drag offset
-                            if (info.offset.x > 100) {
-                                handleSwipe("right"); // Swipe right to move to the previous card
-                            } else if (info.offset.x < -100) {
-                                handleSwipe("left"); // Swipe left to move to the next card
-                            }
-                        }}
+        <div
+            ref={sectionRef}
+            className="relative px-6 py-16 overflow-hidden bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50 lg:px-20"
+        >
+            {/* Animated Background Circles */}
+            <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
+            <div className="absolute rounded-full -bottom-20 -right-10 w-96 h-96 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
+
+            <div className="mx-auto max-w-7xl">
+                {/* Heading */}
+                <div className="space-y-4 text-center">
+                    <motion.h2
+                        className="text-4xl font-extrabold tracking-tight text-gray-800"
+                        initial={{ opacity: 0, y: -50 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 1 }}
                     >
-                        <h3 className="mb-2 text-base font-bold sm:text-lg lg:text-xl">
-                            {card.title}
-                        </h3>
-                        <p className="text-xs leading-relaxed sm:text-sm lg:text-base">
-                            {card.description}
-                        </p>
-                    </motion.div>
-                ))}
+                        Join the Debate Revolution!
+                    </motion.h2>
+                    <motion.p
+                        className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 1, delay: 0.3 }}
+                    >
+                        Become part of the most dynamic and impactful debate club on campus.
+                        Ready to boost your confidence, enhance your communication skills,
+                        and make lifelong connections? Join us today!
+                    </motion.p>
+                </div>
+
+                {/* Cards Section */}
+                <div className="relative mt-16 space-y-8">
+                    {cards.map((card, index) => (
+                        <motion.div
+                            key={card.id}
+                            className={`relative p-8 shadow-xl rounded-xl bg-gradient-to-r ${card.gradient} text-white overflow-hidden`}
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            whileHover="hover"
+                            custom={index}
+                            variants={cardVariants}
+                        >
+                            {/* Background Decoration */}
+                            <motion.div
+                                className="absolute w-40 h-40 bg-white rounded-full opacity-10 -top-10 -left-10"
+                                animate={{
+                                    scale: [1, 1.2, 1],
+                                    rotate: [0, 15, -15, 0],
+                                }}
+                                transition={{
+                                    duration: 6,
+                                    repeat: Infinity,
+                                }}
+                            />
+                            <motion.div
+                                className="absolute w-40 h-40 bg-white rounded-full opacity-10 -bottom-10 -right-10"
+                                animate={{
+                                    scale: [1, 1.3, 1],
+                                    rotate: [0, -15, 15, 0],
+                                }}
+                                transition={{
+                                    duration: 6,
+                                    repeat: Infinity,
+                                }}
+                            />
+                            <h3 className="text-2xl font-semibold">{card.title}</h3>
+                            {card.link ? (
+                                <>
+                                    <p className="mt-4 text-lg">{card.description}</p>
+                                    <a
+                                        href={card.link.href}
+                                        className="inline-block px-6 py-2 mt-6 font-semibold text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700"
+                                    >
+                                        {card.link.text}
+                                    </a>
+                                </>
+                            ) : (
+                                <ul className="mt-4 text-lg whitespace-pre-line list-disc list-inside">
+                                    {card.description}
+                                </ul>
+                            )}
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </div>
     );
 };
 
-export default CardSlider;
+export default JoinSection;
