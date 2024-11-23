@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatingShapes {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.bg-gradient-animation {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #ebf8ff, #cce7ff, #b3dbff, #80caff);
+    background-size: 300% 300%;
+    animation: gradientShift 20s ease infinite;
+    min-height: 100vh;
+}
+
+.bg-gradient-animation:hover {
+    animation: gradientShift 10s ease infinite;
+}
+
+/* Subtle floating shapes */
+.bg-gradient-animation::before,
+.bg-gradient-animation::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: floatingShapes 8s ease-in-out infinite;
+    filter: blur(40px);
+}
+
+.bg-gradient-animation::after {
+    top: auto;
+    bottom: -50px;
+    right: -50px;
+    left: auto;
+    animation-duration: 10s;
+}

@@ -27,7 +27,7 @@ const AchievementSlider = () => {
     }, []);
 
     return (
-        <div className="bg-gradient-to-r from-blue-200 to-white">
+        <div className="">
             <section className="relative text-white bg-gradient-to-r">
                 {/* Background Image */}
                 <div
