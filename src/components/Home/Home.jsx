@@ -1,17 +1,35 @@
-import { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import AchievementSlider from "./AchievementSlider";
-import AboutSection from "./AboutSection"
-import AchievmentsSection from "./AchievmentsSection"
+import AboutSection from "./AboutSection";
+import AchievmentsSection from "./AchievmentsSection";
+import JoinSection from "./JoinSection";
 
 const Home = () => {
-    const sectionRef = useRef(null);
-    // const isInView = useInView(sectionRef, { once: true });
+    const [bgColor, setBgColor] = useState("#f3e8ff"); // Initial background color
+
+    // Refs for sections
+    const aboutRef = useRef(null);
+    const achievementsRef = useRef(null);
+    const joinRef = useRef(null);
+
+    // Track visibility
+    const isAboutInView = useInView(aboutRef, { margin: "-50% 0px -50% 0px" });
+    const isAchievementsInView = useInView(achievementsRef, { margin: "-50% 0px -50% 0px" });
+    const isJoinInView = useInView(joinRef, { margin: "-50% 0px -50% 0px" });
+
+    // Update background color only when visibility changes
+    useEffect(() => {
+        if (isAboutInView) setBgColor("#f3e8ff"); // Light purple for About section
+        else if (isAchievementsInView) setBgColor("#e0f7fa"); // Light cyan for Achievements section
+        else if (isJoinInView) setBgColor("#fff3e0"); // Light orange for Join section
+    }, [isAboutInView, isAchievementsInView, isJoinInView]); // Dependencies
 
     return (
-        <div
-            ref={sectionRef}
-            className="relative min-h-screen overflow-hidden bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50"
+        <motion.div
+            className="relative min-h-screen overflow-hidden"
+            animate={{ backgroundColor: bgColor }} // Animate the full background
+            transition={{ duration: 0.6, ease: "easeInOut" }}
         >
             {/* Animated Background Circles */}
             <motion.div
@@ -37,35 +55,20 @@ const Home = () => {
                 }}
             ></motion.div>
 
-            {/* Content */}
-            {/* <motion.div
-                className="relative z-10 px-6 py-16 mx-auto space-y-16 text-center max-w-7xl"
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 1 }}
-            >
-                <motion.h1
-                    className="text-4xl font-extrabold tracking-tight text-gray-800"
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 1 }}
-                >
-                    Welcome to Home Page
-                </motion.h1>
-                <motion.p
-                    className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 1, delay: 0.3 }}
-                >
-                    Experience a beautifully crafted home page with dynamic animations
-                    and engaging design, tailored to replicate the JoinSection.
-                </motion.p>
-            </motion.div> */}
-            <AchievementSlider></AchievementSlider>
-            <AboutSection></AboutSection>
-            <AchievmentsSection></AchievmentsSection>
-        </div>
+            {/* Page Content */}
+            <div className="relative z-10 space-y-16">
+                <AchievementSlider/>
+                <div ref={aboutRef}>
+                    <AboutSection />
+                </div>
+                <div ref={achievementsRef}>
+                    <AchievmentsSection />
+                </div>
+                <div ref={joinRef}>
+                    <JoinSection />
+                </div>
+            </div>
+        </motion.div>
     );
 };
 
