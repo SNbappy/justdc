@@ -11,8 +11,8 @@ const Home = () => {
             <NavBar></NavBar>
             <AchievementSlider></AchievementSlider>
             <AboutSection></AboutSection>
-            <JoinSection></JoinSection>
             <AchievementsSection></AchievementsSection>
+            <JoinSection></JoinSection>
             <Footer></Footer>
         </div>
     );

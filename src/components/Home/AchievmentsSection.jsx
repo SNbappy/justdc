@@ -1,85 +1,81 @@
+import { FaTrophy, FaStar, FaGlobe, FaHandsHelping, FaMedal, FaChalkboardTeacher } from "react-icons/fa";
+
 const AchievementsSection = () => {
+    const achievements = [
+        {
+            title: "National Champions",
+            description:
+                "Secured first place in the National Debate Championship 2023, showcasing teamwork and critical thinking.",
+            icon: <FaTrophy className="text-4xl text-blue-600" />,
+        },
+        {
+            title: "Best Speaker Awards",
+            description:
+                "Our members have earned prestigious Best Speaker awards in regional and national competitions.",
+            icon: <FaStar className="text-4xl text-yellow-500" />,
+        },
+        {
+            title: "International Recognition",
+            description:
+                "Represented our country at the International Debate Championship, ranking among the top 5 teams worldwide.",
+            icon: <FaGlobe className="text-4xl text-green-500" />,
+        },
+        {
+            title: "Social Impact Events",
+            description:
+                "Organized debates addressing global and local issues, earning widespread appreciation.",
+            icon: <FaHandsHelping className="text-4xl text-purple-500" />,
+        },
+        {
+            title: "Outstanding Debater",
+            description:
+                "One of our members was awarded Outstanding Debater of the Year at the National Debate Summit 2023.",
+            icon: <FaMedal className="text-4xl text-red-500" />,
+        },
+        {
+            title: "Debate Workshop Leaders",
+            description:
+                "Conducted workshops in schools and universities to inspire the next generation of debaters.",
+            icon: <FaChalkboardTeacher className="text-4xl text-teal-500" />,
+        },
+    ];
+
     return (
-        <div className="bg-white py-16 px-6 lg:px-20">
-            <div className="max-w-7xl mx-auto space-y-12">
+        <div className="px-6 py-20 bg-gray-50 lg:px-20">
+            <div className="mx-auto space-y-16 max-w-7xl">
                 {/* Heading */}
-                <div className="text-center space-y-4">
-                    <h2 className="text-4xl font-extrabold text-gray-800">
+                <div className="space-y-6 text-center">
+                    <h2 className="text-4xl font-bold text-gray-800">
                         Our Achievements
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Over the years, our debate club has achieved remarkable milestones
-                        in competitions and events. Here are some of our proudest moments.
+                    <p className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600">
+                        Over the years, our debate club has reached remarkable milestones, proving our dedication to excellence and impact.
                     </p>
                 </div>
 
                 {/* Achievement Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {/* Card 1 */}
-                    <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                        <h3 className="text-2xl font-semibold text-gray-800">
-                            National Champions
-                        </h3>
-                        <p className="text-gray-600 mt-3 leading-relaxed">
-                            We secured the first position in the National Debate Championship
-                            2023, showcasing exceptional teamwork and critical thinking.
-                        </p>
-                    </div>
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                    {achievements.map((achievement, index) => (
+                        <div
+                            key={index}
+                            className="p-8 space-y-4 text-center transition duration-300 bg-white shadow-md rounded-xl hover:shadow-lg"
+                        >
+                            {/* Icon */}
+                            <div className="inline-block p-4 bg-gray-100 rounded-full">
+                                {achievement.icon}
+                            </div>
 
-                    {/* Card 2 */}
-                    <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                        <h3 className="text-2xl font-semibold text-gray-800">
-                            Best Speaker Awards
-                        </h3>
-                        <p className="text-gray-600 mt-3 leading-relaxed">
-                            Multiple members of our club have won prestigious Best Speaker
-                            awards in regional and national competitions.
-                        </p>
-                    </div>
+                            {/* Title */}
+                            <h3 className="text-2xl font-semibold text-gray-800">
+                                {achievement.title}
+                            </h3>
 
-                    {/* Card 3 */}
-                    <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                        <h3 className="text-2xl font-semibold text-gray-800">
-                            International Recognition
-                        </h3>
-                        <p className="text-gray-600 mt-3 leading-relaxed">
-                            Represented our country at the International Debate Championship
-                            and ranked among the top 5 teams worldwide.
-                        </p>
-                    </div>
-
-                    {/* Card 4 */}
-                    <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                        <h3 className="text-2xl font-semibold text-gray-800">
-                            Social Impact Events
-                        </h3>
-                        <p className="text-gray-600 mt-3 leading-relaxed">
-                            Organized social impact debates to raise awareness about key
-                            global and local issues, gaining wide appreciation.
-                        </p>
-                    </div>
-
-                    {/* Card 5 */}
-                    <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                        <h3 className="text-2xl font-semibold text-gray-800">
-                            Outstanding Debater
-                        </h3>
-                        <p className="text-gray-600 mt-3 leading-relaxed">
-                            One of our members was awarded the Outstanding Debater of the Year
-                            at the National Debate Summit 2023.
-                        </p>
-                    </div>
-
-                    {/* Card 6 */}
-                    <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                        <h3 className="text-2xl font-semibold text-gray-800">
-                            Debate Workshop Leaders
-                        </h3>
-                        <p className="text-gray-600 mt-3 leading-relaxed">
-                            Conducted workshops in over 15 schools and universities to inspire
-                            the next generation of debaters.
-                        </p>
-                    </div>
+                            {/* Description */}
+                            <p className="leading-relaxed text-gray-600">
+                                {achievement.description}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

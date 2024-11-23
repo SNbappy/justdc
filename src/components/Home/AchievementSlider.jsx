@@ -28,7 +28,43 @@ const AchievementSlider = () => {
 
     return (
         <div className="bg-gradient-to-r from-blue-200 to-white">
-            <div className="relative w-full max-w-4xl mx-auto py-8">
+            <section className="relative text-white bg-gradient-to-r">
+                {/* Background Image */}
+                <div
+                    className="absolute inset-0 bg-center bg-cover"
+                    style={{
+                        backgroundImage: "url('path/to/debate-image.jpg')",
+                        opacity: 0.7,
+                    }}
+                ></div>
+
+                {/* Content Wrapper */}
+                <div className="relative z-10 px-6 py-24 mx-auto max-w-7xl sm:px-12">
+                    <div className="space-y-6 text-center">
+                        {/* Tagline */}
+                        <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 md:text-5xl">
+                            Uniting Voices, Shaping Futures
+                        </h1>
+
+                        {/* Brief Description */}
+                        <p className="max-w-3xl mx-auto mt-4 text-lg text-gray-700 md:text-xl opacity-90">
+                            JUST Debate Club is dedicated to fostering critical thinking, public speaking, and leadership through engaging debates and discussions. We provide a platform for students to excel and make their voices heard on global issues.
+                        </p>
+
+
+                        {/* Call to Action Button */}
+                        <div className="flex justify-center mt-6">
+                            <a
+                                href="#join"
+                                className="inline-block px-8 py-3 text-lg font-semibold text-white transition duration-300 bg-orange-500 rounded-lg hover:bg-orange-600"
+                            >
+                                Join Us Today
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div className="relative w-full max-w-4xl py-8 mx-auto">
                 {/* Slider */}
                 <div className="overflow-hidden rounded-lg shadow-md">
                     <div
@@ -38,7 +74,7 @@ const AchievementSlider = () => {
                         {images.map((image, index) => (
                             <div
                                 key={index}
-                                className="min-w-full flex items-start justify-center"
+                                className="flex items-start justify-center min-w-full"
                             >
                                 <img
                                     src={image}
