@@ -63,10 +63,10 @@ const JoinSection = () => {
     return (
         <div
             ref={sectionRef}
-            className="relative px-6 py-16 overflow-hidden lg:px-20"
+            className="relative px-6 py-16 overflow-hidden bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50 lg:px-20"
         >
             {/* Animated Background Circles */}
-            <div className="absolute rounded-full -top-20 -left-10 w-96 h-96"></div>
+            <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
             <div className="absolute rounded-full -bottom-20 -right-10 w-96 h-96 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
 
             <div className="mx-auto max-w-7xl">
