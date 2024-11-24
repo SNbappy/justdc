@@ -1,79 +1,51 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const executiveMembers = [
     {
-        name: "John Doe",
-        position: "President",
-        image: "https://via.placeholder.com/150",
-    },
-    {
-        name: "Jane Smith",
-        position: "Secretary",
-        image: "https://via.placeholder.com/150",
-    },
-    {
-        name: "Michael Lee",
-        position: "Treasurer",
-        image: "https://via.placeholder.com/150",
-    },
-    {
-        name: "Emily Davis",
-        position: "Vice President",
-        image: "https://via.placeholder.com/150",
-    },
-    {
         name: "Daniel Brown",
         position: "Chief Technology Officer",
-        image: "https://via.placeholder.com/150",
+        image: "https://via.placeholder.com/400",
     },
     {
         name: "Sophia Turner",
         position: "Chief Marketing Officer",
-        image: "https://via.placeholder.com/150",
+        image: "https://via.placeholder.com/400",
     },
     {
         name: "David Wilson",
         position: "Chief Operating Officer",
-        image: "https://via.placeholder.com/150",
+        image: "https://via.placeholder.com/400",
     },
     {
         name: "Olivia Moore",
         position: "Head of HR",
-        image: "https://via.placeholder.com/150",
+        image: "https://via.placeholder.com/400",
     },
+    // Add 25+ more members here as per your requirement
 ];
 
 const MeetTheTeam = () => {
+    const [activeMember, setActiveMember] = useState(null); // To track the hovered/clicked member
+
     return (
         <div className="py-16">
-            <div className="container mx-auto text-center">
+            <div className="container relative mx-auto text-center">
                 <h2 className="mb-8 text-3xl font-bold text-gray-800">Meet The Team</h2>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
+                <div className="flex space-x-8 overflow-x-auto whitespace-nowrap">
                     {executiveMembers.map((member, index) => (
                         <motion.div
                             key={index}
-                            className="relative overflow-hidden bg-white rounded-lg shadow-lg"
-                            whileHover={{
-                                scale: 1.05,
-                                transition: { duration: 0.4 },
-                            }}
-                            whileTap={{
-                                scale: 0.98,
-                            }}
-                            animate={{
-                                x: ["-10%", "10%", "-10%"], // Floating left-right motion
-                                y: ["0%", "-5%", "0%"], // Floating up and down
-                            }}
-                            transition={{
-                                duration: 8, // Cycle duration for floating
-                                repeat: Infinity, // Infinite loop
-                                ease: "easeInOut",
-                            }}
+                            className="relative inline-block bg-white rounded-lg shadow-lg group"
+                            onMouseEnter={() => setActiveMember(member)}
+                            onMouseLeave={() => setActiveMember(null)}
+                            style={{ width: "250px" }} // Fixed width for each card
                         >
+                            {/* Cropped Image */}
                             <img
                                 src={member.image}
                                 alt={member.name}
-                                className="object-cover w-full h-56"
+                                className="object-cover w-full h-32 group-hover:opacity-70"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-80"></div>
                             <div className="absolute text-white bottom-4 left-4">
@@ -83,6 +55,26 @@ const MeetTheTeam = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Floating Card for Active Member */}
+                {activeMember && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                        className="absolute z-50 w-11/12 p-6 transform -translate-x-1/2 bg-white rounded-lg shadow-2xl top-10 left-1/2 sm:w-96"
+                    >
+                        <img
+                            src={activeMember.image}
+                            alt={activeMember.name}
+                            className="object-cover w-full h-56 rounded-lg"
+                        />
+                        <h3 className="mt-4 text-2xl font-semibold text-gray-800">
+                            {activeMember.name}
+                        </h3>
+                        <p className="text-gray-600">{activeMember.position}</p>
+                    </motion.div>
+                )}
             </div>
         </div>
     );
