@@ -80,10 +80,10 @@ const AchievementsSection = () => {
                             <div
                                 key={index}
                                 className={`absolute w-full transition-all duration-300 ease-in-out transform ${index === currentIndex
-                                        ? "z-20 scale-100 opacity-100"
-                                        : index > currentIndex
-                                            ? "z-10 scale-90 opacity-70 translate-y-4"
-                                            : "z-0 scale-85 opacity-50 translate-y-8"
+                                    ? "z-20 scale-100 opacity-100 rotate-0"
+                                    : index > currentIndex
+                                        ? "z-10 scale-90 opacity-70 translate-y-4 rotate-3"
+                                        : "z-0 scale-85 opacity-50 translate-y-8 -rotate-3"
                                     }`}
                                 style={{
                                     background: "white",
@@ -113,6 +113,7 @@ const AchievementsSection = () => {
                             </div>
                         ))}
                     </div>
+
 
                     {/* Cards on Large Screens (Grid layout with 3 cards per row) */}
                     <div className="hidden grid-cols-3 gap-10 sm:grid">
