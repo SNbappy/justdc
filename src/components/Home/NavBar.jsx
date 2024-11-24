@@ -12,8 +12,8 @@ const NavBar = () => {
         <nav className="sticky top-0 z-50 shadow-lg bg-gradient-to-r from-blue-600 to-purple-600">
             <div className="container flex items-center justify-between px-4 py-4 mx-auto">
                 {/* Logo */}
-                <div className="flex items-center gap-2 text-2xl font-bold text-white">
-                    <img className="w-[30px] h-[30px] rounded-full" src={logo} alt="Logo" />
+                <div className="flex items-center gap-2 text-3xl font-black text-white">
+                    <img className="w-[35px] h-[35px] rounded-full" src={logo} alt="Logo" />
                     <a href="/" className="hover:text-gray-200">
                         JUST<span className="text-yellow-400">DC</span>
                     </a>

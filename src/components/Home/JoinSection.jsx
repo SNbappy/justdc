@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const JoinSection = () => {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true });
+    const [clickedCard, setClickedCard] = useState(null); // Track clicked card for small devices
 
     const cardVariants = {
         hidden: { opacity: 0, y: 100, scale: 0.9 },
@@ -12,15 +13,15 @@ const JoinSection = () => {
             y: 0,
             scale: 1,
             transition: {
-                delay: index * 0.3, // Stagger for engaging animation
+                delay: index * 0.3,
                 duration: 0.8,
                 type: "spring",
                 stiffness: 120,
             },
         }),
-        hover: {
+        active: {
             scale: 1.05,
-            rotate: 2, // Slight rotation for depth
+            rotate: 2,
             transition: {
                 duration: 0.3,
                 type: "spring",
@@ -39,19 +40,13 @@ const JoinSection = () => {
         {
             id: 2,
             title: "🌟 Why join JUSTDC?",
-            description: `
-        * Boost your confidence and communication skills
-        * Engage in exciting debates and discussions
-        * Meet like-minded individuals and build lifelong friendships
-        * Represent JUST in inter-university and World debate competitions`,
+            description: `Boost your confidence and communication skills\nEngage in exciting debates and discussions\nMeet like-minded individuals and build lifelong friendships\nRepresent JUST in inter-university and World debate competitions`,
             gradient: "from-purple-500 to-pink-500",
         },
         {
             id: 3,
             title: "📅 How to Apply?",
-            description: `
-        1. Fill out the registration form (available at the JUSTDC Office)
-        2. Join our introductory session on campus to learn more`,
+            description: `1. Fill out the registration form (available at the JUSTDC Office)\n2. Join our introductory session on campus to learn more`,
             gradient: "from-teal-500 to-cyan-500",
             link: {
                 text: "Register Now",
@@ -59,6 +54,10 @@ const JoinSection = () => {
             },
         },
     ];
+
+    const handleCardClick = (id) => {
+        setClickedCard((prev) => (prev === id ? null : id));
+    };
 
     return (
         <div
@@ -100,9 +99,15 @@ const JoinSection = () => {
                             className={`relative p-8 shadow-xl rounded-xl bg-gradient-to-r ${card.gradient} text-white overflow-hidden`}
                             initial="hidden"
                             animate={isInView ? "visible" : "hidden"}
-                            whileHover="hover"
+                            whileHover="active" // Hover effect for large devices
                             custom={index}
                             variants={cardVariants}
+                            onClick={() => handleCardClick(card.id)} // Click effect for small devices
+                            animate={
+                                clickedCard === card.id && window.innerWidth < 1024
+                                    ? "active"
+                                    : "visible"
+                            }
                         >
                             {/* Background Decoration */}
                             <motion.div
