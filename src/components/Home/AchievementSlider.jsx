@@ -7,13 +7,21 @@ const images = [
     "https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/468089644_1013729734101795_7406415021985319766_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=w0-spbpdfkMQ7kNvgG-XY-8&_nc_zt=23&_nc_ht=scontent.fcgp7-1.fna&_nc_gid=Aojj0I7nOE3rUrSOx-mg7q_&oh=00_AYDPC5yWX2A1WiY42XGumbaRDn_LZsBEFGDcA-Hz4Ij1sQ&oe=67465716",
 ];
 
-
 const AchievementSlider = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
 
     // Function to move to the next slide
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    // Function to move to the previous slide
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? images.length - 1 : prevIndex - 1
+        );
     };
 
     // Auto-slide using useEffect
@@ -26,47 +34,40 @@ const AchievementSlider = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // Handle touch start
+    const handleTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    // Handle touch move
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    // Handle touch end
+    const handleTouchEnd = () => {
+        if (touchStart - touchEnd > 50) {
+            nextSlide(); // Swipe left
+        }
+
+        if (touchEnd - touchStart > 50) {
+            prevSlide(); // Swipe right
+        }
+
+        setTouchStart(0);
+        setTouchEnd(0);
+    };
+
     return (
-        <div className="">
-            <section className="relative text-white bg-gradient-to-r">
-                {/* Background Image */}
-                <div
-                    className="absolute inset-0 bg-center bg-cover"
-                    style={{
-                        backgroundImage: "url('path/to/debate-image.jpg')",
-                        opacity: 0.7,
-                    }}
-                ></div>
-
-                {/* Content Wrapper */}
-                <div className="relative z-10 px-6 py-24 mx-auto max-w-7xl sm:px-12">
-                    <div className="space-y-6 text-center">
-                        {/* Tagline */}
-                        <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 md:text-5xl">
-                            Uniting Voices, Shaping Futures
-                        </h1>
-
-                        {/* Brief Description */}
-                        <p className="max-w-3xl mx-auto mt-4 text-lg text-gray-700 md:text-xl opacity-90">
-                            JUST Debate Club is dedicated to fostering critical thinking, public speaking, and leadership through engaging debates and discussions. We provide a platform for students to excel and make their voices heard on global issues.
-                        </p>
-
-
-                        {/* Call to Action Button */}
-                        <div className="flex justify-center mt-6">
-                            <a
-                                href="#join"
-                                className="inline-block px-8 py-3 text-lg font-semibold text-white transition duration-300 bg-orange-500 rounded-lg hover:bg-orange-600"
-                            >
-                                Join Us Today
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div>
             <div className="relative w-full max-w-4xl py-8 mx-auto">
                 {/* Slider */}
-                <div className="overflow-hidden rounded-lg shadow-md">
+                <div
+                    className="overflow-hidden rounded-lg shadow-md"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
                     <div
                         className="flex transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
