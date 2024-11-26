@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import AchievementSlider from "./AchievementSlider";
-import AboutSection from "./AboutSection";
+// import AboutSection from "./AboutSection";
+import WhyJoinSection from "./WhyJoinSection"
 import AchievmentsSection from "./AchievmentsSection";
 import JoinSection from "./JoinSection";
 import MeetTheTeam from "./MeetTheTeam";
@@ -11,14 +12,14 @@ const Home = () => {
 
     // Refs for sections
     const sliderRef = useRef(null);
-    const aboutRef = useRef(null);
+    const whyJoinRef = useRef(null);
     const achievementsRef = useRef(null);
     const joinRef = useRef(null);
     const meetTeamRef = useRef(null);
 
     // Track visibility
     const isSliderInView = useInView(sliderRef, { margin: "-50% 0px -50% 0px" });
-    const isAboutInView = useInView(aboutRef, { margin: "-50% 0px -50% 0px" });
+    const isAboutInView = useInView(whyJoinRef, { margin: "-50% 0px -50% 0px" });
     const isAchievementsInView = useInView(achievementsRef, { margin: "-50% 0px -50% 0px" });
     const isJoinInView = useInView(joinRef, { margin: "-50% 0px -50% 0px" });
     const isMeetTeamInView = useInView(meetTeamRef, { margin: "-50% 0px -50% 0px" });
@@ -113,8 +114,8 @@ const Home = () => {
                 <div ref={sliderRef}>
                     <AchievementSlider />
                 </div>
-                <div ref={aboutRef}>
-                    <AboutSection />
+                <div ref={whyJoinRef}>
+                    <WhyJoinSection />
                 </div>
                 <div ref={achievementsRef}>
                     <AchievmentsSection />

@@ -79,13 +79,10 @@ const CardSlider = () => {
             {/* Heading */}
             <div className="space-y-4 text-center">
                 <h2 className="text-4xl font-extrabold text-gray-800">
-                    About Our Debate Club
+                    Why Join Us
                 </h2>
                 <p className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
-                    Our debate club is a hub for aspiring speakers, critical thinkers,
-                    and changemakers. Through vibrant discussions, collaborative learning,
-                    and engaging debates, we empower our members to express themselves
-                    confidently and effectively.
+                    By becoming a member, you'll gain access to exciting debate tournaments, engaging workshops, and networking opportunities that will challenge and inspire you to grow. Ready to amplify your voice and make an impact? The JUST Debate Club is your gateway to mastering the art of persuasion and shaping a brighter future.
                 </p>
             </div>
             <div className="flex items-center justify-center h-screen overflow-hidden ">
