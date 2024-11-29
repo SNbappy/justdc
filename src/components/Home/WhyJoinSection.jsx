@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const CardSlider = () => {
+const WhyJoinSection = () => {
     const [positionIndexes, setPositionIndexes] = useState([0, 1, 2, 3, 4]);
 
     const handleCardClick = (clickedIndex) => {
@@ -75,50 +75,48 @@ const CardSlider = () => {
     };
 
     return (
-        <div className="">
+        <div className="flex flex-col items-center justify-start min-h-screen pt-20 overflow-hidden">
             {/* Heading */}
-            <div className="space-y-4 text-center">
+            <div className="space-y-4 text-center mt-9">
                 <h2 className="text-4xl font-extrabold text-gray-800">
                     Why Join Us
                 </h2>
-                <p className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
-                    By becoming a member, you'll gain access to exciting debate tournaments, engaging workshops, and networking opportunities that will challenge and inspire you to grow. Ready to amplify your voice and make an impact? The JUST Debate Club is your gateway to mastering the art of persuasion and shaping a brighter future.
+                <p className="max-w-3xl mx-4 text-lg leading-relaxed text-gray-700">
+                    it's a vibrant community where ideas flourish, skills sharpen, and leaders emerge. Joining our club means stepping into an environment that values critical thinking, persuasive communication, and intellectual growth.
                 </p>
             </div>
-            <div className="flex items-center justify-center h-screen overflow-hidden ">
-                <div className="relative w-full max-w-[1200px] h-[80vh] sm:h-[70vh] flex justify-center items-center">
-                    {cards.map((card, index) => (
-                        <motion.div
-                            key={card.id}
-                            className={`absolute w-[80%] sm:w-[50%] md:w-[400px] lg:w-[500px] h-[50%] sm:h-[60%] lg:h-[400px] md:h-[300px] p-4 sm:p-6 text-white rounded-xl shadow-lg bg-gradient-to-r ${card.bgGradient} flex flex-col items-center justify-center text-center cursor-pointer`}
-                            initial="center"
-                            animate={positions[positionIndexes[index]]}
-                            variants={cardVariants}
-                            transition={{ duration: 0.5 }}
-                            onClick={() => handleCardClick(index)} // Move clicked card to the center
-                            drag="x" // Enable dragging in the x direction
-                            dragConstraints={{ left: -200, right: 200 }} // Set constraints for dragging
-                            onDragEnd={(event, info) => {
-                                // Detect swipe direction based on drag offset
-                                if (info.offset.x > 100) {
-                                    handleSwipe("right"); // Swipe right to move to the previous card
-                                } else if (info.offset.x < -100) {
-                                    handleSwipe("left"); // Swipe left to move to the next card
-                                }
-                            }}
-                        >
-                            <h3 className="mb-2 text-base font-bold sm:text-lg lg:text-xl">
-                                {card.title}
-                            </h3>
-                            <p className="text-xs leading-relaxed sm:text-sm lg:text-base">
-                                {card.description}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
+            <div className="relative w-full max-w-[1200px] h-[60vh] sm:h-[70vh] flex justify-center items-center mt-[-50px] lg:mt-0">
+                {cards.map((card, index) => (
+                    <motion.div
+                        key={card.id}
+                        className={`absolute w-[80%] sm:w-[50%] md:w-[400px] lg:w-[500px] h-[50%] sm:h-[60%] lg:h-[400px] md:h-[300px] p-4 sm:p-6 text-white rounded-xl shadow-lg bg-gradient-to-r ${card.bgGradient} flex flex-col items-center justify-center text-center cursor-pointer`}
+                        initial="center"
+                        animate={positions[positionIndexes[index]]}
+                        variants={cardVariants}
+                        transition={{ duration: 0.5 }}
+                        onClick={() => handleCardClick(index)} // Move clicked card to the center
+                        drag="x" // Enable dragging in the x direction
+                        dragConstraints={{ left: -200, right: 200 }} // Set constraints for dragging
+                        onDragEnd={(event, info) => {
+                            // Detect swipe direction based on drag offset
+                            if (info.offset.x > 100) {
+                                handleSwipe("right"); // Swipe right to move to the previous card
+                            } else if (info.offset.x < -100) {
+                                handleSwipe("left"); // Swipe left to move to the next card
+                            }
+                        }}
+                    >
+                        <h3 className="mb-2 text-base font-bold sm:text-lg lg:text-xl">
+                            {card.title}
+                        </h3>
+                        <p className="text-xs leading-relaxed sm:text-sm lg:text-base">
+                            {card.description}
+                        </p>
+                    </motion.div>
+                ))}
             </div>
         </div>
     );
 };
 
-export default CardSlider;
+export default WhyJoinSection;

@@ -65,7 +65,7 @@ const AchievementsSection = () => {
     });
 
     return (
-        <div className="px-6 py-20 lg:px-20">
+        <div className="px-6 py-20 mt-[-80px] lg:mt-0 lg:px-20">
             <div className="mx-auto space-y-16 max-w-7xl">
                 {/* Heading */}
                 <div className="space-y-6 text-center">
