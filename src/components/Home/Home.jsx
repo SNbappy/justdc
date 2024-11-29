@@ -121,10 +121,10 @@ const Home = () => {
                     <AchievmentsSection />
                 </div>
                 <div ref={joinRef}>
-                    <JoinSection />
+                    <MeetTheTeam />
                 </div>
                 <div ref={meetTeamRef}>
-                    <MeetTheTeam />
+                    <JoinSection />
                 </div>
             </div>
         </motion.div>

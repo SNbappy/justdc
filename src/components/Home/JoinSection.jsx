@@ -62,7 +62,7 @@ const JoinSection = () => {
     return (
         <div
             ref={sectionRef}
-            className="relative px-6 py-16 overflow-hidden lg:px-20"
+            className="relative px-6 py-16 mt-[-100px] lg:mt-0 overflow-hidden lg:px-20"
         >
             {/* Animated Background Circles */}
             <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 opacity-30 blur-2xl animate-pulse"></div>

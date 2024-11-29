@@ -20,7 +20,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Nav Links */}
-                <div className="items-center hidden space-x-6 md:flex">
+                <div className="items-center hidden space-x-6 lg:flex">
                     <a
                         href="/"
                         className="relative text-white transition duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
@@ -40,6 +40,18 @@ const NavBar = () => {
                         Events
                     </a>
                     <a
+                        href="#achievements"
+                        className="relative text-white transition duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
+                    >
+                        Achievements
+                    </a>
+                    <a
+                        href="#executive"
+                        className="relative text-white transition duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
+                    >
+                        Executive Member
+                    </a>
+                    <a
                         href="#contact"
                         className="relative text-white transition duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
                     >
@@ -54,7 +66,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <button
                         onClick={toggleMenu}
                         className="text-white focus:outline-none"
@@ -106,6 +118,12 @@ const NavBar = () => {
                         </a>
                         <a href="#events" className="text-gray-800 transition duration-300 hover:text-blue-600">
                             Events
+                        </a>
+                        <a href="#achievements" className="text-gray-800 transition duration-300 hover:text-blue-600">
+                            Achievements
+                        </a>
+                        <a href="#executive" className="text-gray-800 transition duration-300 hover:text-blue-600">
+                            Executive Member
                         </a>
                         <a href="#contact" className="text-gray-800 transition duration-300 hover:text-blue-600">
                             Contact

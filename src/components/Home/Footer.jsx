@@ -1,3 +1,8 @@
+import facebook from "../../images/facebook.png"
+import x_icon from "../../images/x icon.png"
+import youtube from "../../images/youtube.png"
+import instagram from "../../images/instagram.png"
+
 const Footer = () => {
     return (
         <footer className="py-12 text-white bg-gradient-to-r from-gray-800 via-gray-900 to-black">
@@ -59,42 +64,17 @@ const Footer = () => {
                     <p className="text-gray-300">
                         <i className="mr-2 fas fa-envelope"></i>
                         <a href="mailto:justdc@university.com" className="hover:text-pink-400">
-                            justdc@university.com
+                            justdebateclub2018@gmail.com
                         </a>
                     </p>
                     <p className="text-gray-300">
                         <i className="mr-2 fas fa-phone"></i> +123 456 789
                     </p>
-                    <div className="flex mt-6 space-x-4">
-                        {/* Social Media Icons */}
-                        <a
-                            href="#"
-                            className="p-2 text-gray-400 transition duration-300 bg-gray-800 rounded-full hover:text-blue-500"
-                            aria-label="Facebook"
-                        >
-                            <i className="text-xl fab fa-facebook-f"></i>
-                        </a>
-                        <a
-                            href="#"
-                            className="p-2 text-gray-400 transition duration-300 bg-gray-800 rounded-full hover:text-blue-400"
-                            aria-label="Twitter"
-                        >
-                            <i className="text-xl fab fa-twitter"></i>
-                        </a>
-                        <a
-                            href="#"
-                            className="p-2 text-gray-400 transition duration-300 bg-gray-800 rounded-full hover:text-pink-500"
-                            aria-label="Instagram"
-                        >
-                            <i className="text-xl fab fa-instagram"></i>
-                        </a>
-                        <a
-                            href="#"
-                            className="p-2 text-gray-400 transition duration-300 bg-gray-800 rounded-full hover:text-blue-600"
-                            aria-label="LinkedIn"
-                        >
-                            <i className="text-xl fab fa-linkedin-in"></i>
-                        </a>
+                    <div className="flex mt-2 space-x-4">
+                        <img className="w-[30px] h-[30px]" src={facebook} alt="" />
+                        <img className="w-[30px] h-[30px]" src={x_icon} alt="" />
+                        <img className="w-[30px] h-[30px]" src={youtube} alt="" />
+                        <img className="w-[30px] h-[30px]" src={instagram} alt="" />
                     </div>
                 </div>
             </div>
@@ -102,7 +82,7 @@ const Footer = () => {
             <div className="pt-6 mt-12 text-sm text-center text-gray-500 border-t border-gray-700">
                 <p>© 2024 JUST Debate Club. All Rights Reserved.</p>
                 <p className="mt-2">
-                    Designed with ❤️ by <a href="https://enthusiastit.com" className="hover:text-pink-400">Enthusiast IT</a>
+                    Designed with ❤️ by <a href="https://enthusiastit.com" className="hover:text-pink-400">Bappy</a>
                 </p>
             </div>
         </footer>
