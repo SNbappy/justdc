@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        handwriting: ["'Dancing Script', cursive"], // Add a handwriting font
+        sans: ["Poppins", "sans-serif"],
+      },
+    },
   },
   plugins: [require("daisyui")],
 }

@@ -13,6 +13,18 @@ const WhyJoinSection = () => {
         );
     };
 
+    const handleSwipe = (direction) => {
+        setPositionIndexes((prevIndexes) => {
+            const updatedIndexes = [...prevIndexes];
+            if (direction === "left") {
+                updatedIndexes.push(updatedIndexes.shift()); // Move to next card
+            } else if (direction === "right") {
+                updatedIndexes.unshift(updatedIndexes.pop()); // Move to previous card
+            }
+            return updatedIndexes;
+        });
+    };
+
     const cards = [
         {
             id: 1,
@@ -61,47 +73,43 @@ const WhyJoinSection = () => {
         right1: { x: "50%", scale: 0.8, zIndex: 3, opacity: 0.8 },
     };
 
-    // Handle swipe actions
-    const handleSwipe = (direction) => {
-        setPositionIndexes((prevIndexes) => {
-            const updatedIndexes = [...prevIndexes];
-            if (direction === "left") {
-                updatedIndexes.push(updatedIndexes.shift()); // Move to next card
-            } else if (direction === "right") {
-                updatedIndexes.unshift(updatedIndexes.pop()); // Move to previous card
-            }
-            return updatedIndexes;
-        });
-    };
-
     return (
-        <div className="flex flex-col items-center justify-start min-h-screen pt-20 overflow-hidden">
+        <div
+            className="relative flex flex-col items-center justify-start min-h-screen pt-20 overflow-hidden lg:pt-12 bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50"
+        >
+            {/* Animated Background Circles */}
+            <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
+            <div className="absolute rounded-full -bottom-20 -right-10 w-96 h-96 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
+
             {/* Heading */}
             <div className="space-y-4 text-center mt-9">
                 <h2 className="text-4xl font-extrabold text-gray-800">
-                    Why Join Us
+                    About Us
                 </h2>
                 <p className="max-w-3xl mx-4 text-lg leading-relaxed text-gray-700">
-                    it's a vibrant community where ideas flourish, skills sharpen, and leaders emerge. Joining our club means stepping into an environment that values critical thinking, persuasive communication, and intellectual growth.
+                    It's a vibrant community where ideas flourish, skills sharpen, and leaders emerge. Joining our club means stepping into an environment that values critical thinking, persuasive communication, and intellectual growth.
                 </p>
             </div>
+
+            {/* Cards Section */}
             <div className="relative w-full max-w-[1200px] h-[60vh] sm:h-[70vh] flex justify-center items-center mt-[-50px] lg:mt-0">
                 {cards.map((card, index) => (
                     <motion.div
                         key={card.id}
-                        className={`absolute w-[80%] sm:w-[50%] md:w-[400px] lg:w-[500px] h-[50%] sm:h-[60%] lg:h-[400px] md:h-[300px] p-4 sm:p-6 text-white rounded-xl shadow-lg bg-gradient-to-r ${card.bgGradient} flex flex-col items-center justify-center text-center cursor-pointer`}
+                        className={`absolute w-[60%] sm:w-[50%] md:w-[400px] lg:w-[500px] h-[50%] sm:h-[60%] lg:h-[400px] md:h-[300px] p-4 sm:p-6 text-white rounded-xl shadow-lg bg-gradient-to-r ${card.bgGradient} flex flex-col items-center justify-center text-center cursor-pointer`}
                         initial="center"
                         animate={positions[positionIndexes[index]]}
                         variants={cardVariants}
                         transition={{ duration: 0.5 }}
-                        onClick={() => handleCardClick(index)} // Move clicked card to the center
+                        onClick={() => handleCardClick(index)}
                         drag="x" // Enable dragging in the x direction
-                        dragConstraints={{ left: -200, right: 200 }} // Set constraints for dragging
+                        dragConstraints={{ left: 0, right: 0 }} // No hard constraints
                         onDragEnd={(event, info) => {
-                            // Detect swipe direction based on drag offset
-                            if (info.offset.x > 100) {
+                            const threshold = 100; // Swipe threshold
+                            const velocityThreshold = 0.5; // Velocity threshold
+                            if (info.offset.x > threshold || info.velocity.x > velocityThreshold) {
                                 handleSwipe("right"); // Swipe right to move to the previous card
-                            } else if (info.offset.x < -100) {
+                            } else if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) {
                                 handleSwipe("left"); // Swipe left to move to the next card
                             }
                         }}

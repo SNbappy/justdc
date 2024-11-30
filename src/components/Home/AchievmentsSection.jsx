@@ -14,44 +14,44 @@ const AchievementsSection = () => {
         {
             title: "National Champions",
             description:
-                "Secured first place in the National Debate Championship 2023, showcasing teamwork and critical thinking.",
-            icon: <FaTrophy className="text-4xl text-blue-600" />,
-            bgClass: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptate eos, at earum corporis reprehenderit?",
+            icon: <FaTrophy className="text-4xl text-yellow-500" />,
+            bgClass: "bg-gradient-to-r from-pink-600 via-red-600 to-yellow-600",
         },
         {
             title: "Best Speaker Awards",
             description:
-                "Our members have earned prestigious Best Speaker awards in regional and national competitions.",
-            icon: <FaStar className="text-4xl text-yellow-500" />,
-            bgClass: "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptate eos, at earum corporis reprehenderit?",
+            icon: <FaStar className="text-4xl text-yellow-400" />,
+            bgClass: "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600",
         },
         {
             title: "International Recognition",
             description:
-                "Represented our country at the International Debate Championship, ranking among the top 5 teams worldwide.",
-            icon: <FaGlobe className="text-4xl text-green-500" />,
-            bgClass: "bg-gradient-to-r from-green-500 via-teal-500 to-blue-500",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptate eos, at earum corporis reprehenderit?",
+            icon: <FaGlobe className="text-4xl text-green-400" />,
+            bgClass: "bg-gradient-to-r from-green-600 via-teal-600 to-blue-600",
         },
         {
             title: "Social Impact Events",
             description:
-                "Organized debates addressing global and local issues, earning widespread appreciation.",
-            icon: <FaHandsHelping className="text-4xl text-purple-500" />,
-            bgClass: "bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptate eos, at earum corporis reprehenderit?",
+            icon: <FaHandsHelping className="text-4xl text-purple-400" />,
+            bgClass: "bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600",
         },
         {
             title: "Outstanding Debater",
             description:
-                "One of our members was awarded Outstanding Debater of the Year at the National Debate Summit 2023.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptate eos, at earum corporis reprehenderit?",
             icon: <FaMedal className="text-4xl text-red-500" />,
-            bgClass: "bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500",
+            bgClass: "bg-gradient-to-r from-red-600 via-orange-600 to-yellow-600",
         },
         {
             title: "Debate Workshop Leaders",
             description:
-                "Conducted workshops in schools and universities to inspire the next generation of debaters.",
-            icon: <FaChalkboardTeacher className="text-4xl text-teal-500" />,
-            bgClass: "bg-gradient-to-r from-teal-500 via-green-500 to-blue-500",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptate eos, at earum corporis reprehenderit?",
+            icon: <FaChalkboardTeacher className="text-4xl text-teal-400" />,
+            bgClass: "bg-gradient-to-r from-teal-600 via-green-600 to-blue-600",
         },
     ];
 
@@ -65,21 +65,18 @@ const AchievementsSection = () => {
     });
 
     return (
-        <div className="px-6 py-20 mt-[-100px] lg:mt-0 lg:px-20">
+        <div className="px-6 mt-[-100px] lg:mt-0 lg:pt-20 lg:px-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-black py-20">
             <div className="mx-auto space-y-16 max-w-7xl">
                 {/* Heading */}
-                <div className="space-y-6 text-center">
-                    <h2 className="text-4xl font-bold text-gray-800">Our Achievements</h2>
-                    <p className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600">
+                <div className="space-y-6 text-center text-white">
+                    <h2 className="text-4xl font-bold">Our Achievements</h2>
+                    <p className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-400">
                         Over the years, our debate club has reached remarkable milestones, proving our dedication to excellence and impact.
                     </p>
                 </div>
 
                 {/* Achievement Cards */}
-                <div
-                    className="relative w-full h-[400px] sm:h-auto"
-                    {...swipeHandlers}
-                >
+                <div className="relative w-full h-[400px] sm:h-auto" {...swipeHandlers}>
                     {/* Cards on Small Screens (Original Swipe Effect) */}
                     <div className="relative w-full h-full sm:hidden">
                         {achievements.map((achievement, index) => (
@@ -93,7 +90,7 @@ const AchievementsSection = () => {
                                     }`}
                                 style={{
                                     background: "white",
-                                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                                    boxShadow: "0 6px 10px rgba(0, 0, 0, 0.2)",
                                     borderRadius: "1rem",
                                     display: "flex",
                                     flexDirection: "column",
@@ -103,67 +100,44 @@ const AchievementsSection = () => {
                                 }}
                             >
                                 {/* Icon */}
-                                <div className="inline-block p-6 rounded-full shadow-md bg-gradient-to-r from-blue-200 to-pink-100">
+                                <div className="inline-block p-6 rounded-full shadow-md bg-gradient-to-r from-blue-500 to-pink-500">
                                     {achievement.icon}
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="mt-4 text-2xl font-semibold text-gray-800">
-                                    {achievement.title}
-                                </h3>
+                                <h3 className="mt-4 text-2xl font-semibold text-gray-800">{achievement.title}</h3>
 
                                 {/* Description */}
-                                <p className="mt-2 leading-relaxed text-gray-600">
-                                    {achievement.description}
-                                </p>
+                                <p className="mt-2 leading-relaxed text-gray-600">{achievement.description}</p>
                             </div>
                         ))}
                     </div>
 
-                    {/* Cards on Large Screens (Grid layout with 3 cards per row) */}
+                    {/* Cards on Large Screens (Grid layout with gradient overlay) */}
                     <div className="hidden grid-cols-3 gap-10 sm:grid">
                         {achievements.map((achievement, index) => (
                             <div
                                 key={index}
-                                className={`relative p-8 text-white shadow-lg rounded-xl overflow-hidden ${achievement.bgClass} hover:scale-105 transition-all`}
+                                className={`relative p-8 text-white shadow-xl rounded-xl overflow-hidden ${achievement.bgClass} hover:scale-105 hover:shadow-2xl transition-all transform`}
                             >
+                                {/* Light Gradient Overlay */}
+                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/10 via-white/5 to-transparent rounded-xl"></div>
+
                                 {/* Icon */}
-                                <div className="inline-block p-6 bg-white rounded-full shadow-md">
+                                <div className="relative z-10 inline-block p-6 bg-white rounded-full shadow-md">
                                     {achievement.icon}
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-2xl font-semibold">
-                                    {achievement.title}
-                                </h3>
+                                <h3 className="relative z-10 text-2xl font-semibold">{achievement.title}</h3>
 
                                 {/* Description */}
-                                <p className="leading-relaxed">
-                                    {achievement.description}
-                                </p>
-
-                                {/* Animated Effect */}
-                                <div className="absolute inset-0 opacity-20 animate-spin-slow bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-white to-transparent"></div>
+                                <p className="relative z-10 leading-relaxed">{achievement.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
-
-            {/* CSS for Animations */}
-            <style jsx>{`
-                @keyframes spin-slow {
-                    from {
-                        transform: rotate(0deg);
-                    }
-                    to {
-                        transform: rotate(360deg);
-                    }
-                }
-                .animate-spin-slow {
-                    animation: spin-slow 10s linear infinite;
-                }
-            `}</style>
         </div>
     );
 };

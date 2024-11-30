@@ -49,7 +49,7 @@ const NavBar = () => {
                         href="#executive"
                         className="relative text-white transition duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full"
                     >
-                        Executive Member
+                        Executive Panel
                     </a>
                     <a
                         href="#contact"

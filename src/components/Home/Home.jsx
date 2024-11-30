@@ -6,6 +6,9 @@ import WhyJoinSection from "./WhyJoinSection"
 import AchievmentsSection from "./AchievmentsSection";
 import JoinSection from "./JoinSection";
 import MeetTheTeam from "./MeetTheTeam";
+import SpeechCards from "./SpeechCards";
+import WhatWeProvide from "./WhatWeProvide";
+import DebateClubAchievements from "./DebateClubAchievements";
 
 const Home = () => {
     const [bgColor, setBgColor] = useState("#f3e8ff"); // Initial background color
@@ -117,6 +120,17 @@ const Home = () => {
                 <div ref={whyJoinRef}>
                     <WhyJoinSection />
                 </div>
+                
+                <div ref={whyJoinRef}>
+                    <SpeechCards />
+                </div>
+                <div ref={whyJoinRef}>
+                    <WhatWeProvide />
+                </div>
+                <div ref={whyJoinRef}>
+                    <DebateClubAchievements />
+                </div>
+                
                 <div ref={achievementsRef}>
                     <AchievmentsSection />
                 </div>
