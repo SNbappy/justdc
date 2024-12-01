@@ -82,7 +82,7 @@ const RecentEvents = () => {
                 {events.map((event, index) => (
                     <motion.div
                         key={event.id}
-                        className="flex flex-col items-center p-6 text-gray-800 bg-white shadow-lg rounded-xl hover:shadow-2xl"
+                        className="flex flex-col items-center p-6 text-gray-800 transition-all duration-300 ease-in-out transform bg-white shadow-lg rounded-xl hover:scale-105 hover:shadow-2xl hover:bg-indigo-50"
                         initial="hidden"
                         animate={isInView ? "visible" : "hidden"}
                         variants={eventVariants}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import image from "../../images/Ex-President.jpg";
-import image1 from "../../images/President.jpg"
+import image1 from "../../images/President.jpg";
 
 const LeaderSpeechSection = () => {
     const leaders = [
@@ -31,8 +31,11 @@ const LeaderSpeechSection = () => {
                 <motion.div
                     key={leader.id}
                     className="relative max-w-4xl px-4 mx-auto mb-12 sm:px-6 md:px-8"
+                    // Apply hover effect on larger screens, otherwise always scale
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.3 }}
+                    // Add scale for smaller devices (mobile-first approach)
+                    className="relative max-w-4xl px-4 mx-auto mb-12 transform scale-105 sm:px-6 md:px-8 sm:transform-none"
                 >
                     {/* Glowing Background Behind Card */}
                     <div className="absolute inset-0 opacity-50 -z-10 rounded-2xl bg-gradient-to-br from-blue-700 via-purple-600 to-indigo-700 blur-xl"></div>
