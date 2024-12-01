@@ -1,23 +1,24 @@
 import { motion } from "framer-motion";
-import image from "../../images/demo.jpg";
+import image from "../../images/Ex-President.jpg";
+import image1 from "../../images/President.jpg"
 
 const LeaderSpeechSection = () => {
     const leaders = [
         {
             id: 1,
-            name: "Dr. John Doe",
-            title: "Chairman",
+            name: "Md. Shahriar Kabir",
+            title: "Ex-President, JUSTDC",
             image: image,
             speech:
-                "Welcome to JUST Debate Club, where every voice matters. Together, we empower students to lead with conviction and wisdom.",
+                "At JUST Debate Club, I have witnessed firsthand how our members grow into confident speakers, leaders, and critical thinkers, all while fostering a spirit of respectful debate.",
         },
         {
             id: 2,
-            name: "Jane Smith",
+            name: "Ayman Faiyaz",
             title: "President",
-            image: image,
+            image: image1,
             speech:
-                "At JUST Debate Club, we believe in fostering an environment of growth, collaboration, and creativity. Join us to make a difference.",
+                "The club has always been a space for intellectual exchange, where diverse ideas converge, allowing students to challenge their perspectives and shape the future with informed voices.",
         },
     ];
 
@@ -39,27 +40,14 @@ const LeaderSpeechSection = () => {
                     {/* Main Card */}
                     <div className="relative overflow-hidden bg-gray-900 shadow-lg bg-opacity-90 rounded-2xl">
                         <div className="flex flex-col items-center sm:flex-row">
-                            {/* Image Section with Professional Shape */}
-                            <div className="relative w-full sm:w-[40%] p-8">
-                                <div className="relative w-full h-[300px] rounded-2xl overflow-hidden">
-                                    <svg
-                                        className="absolute w-full h-full"
-                                        viewBox="0 0 500 500"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <clipPath id={`clip-path-${leader.id}`}>
-                                            <path
-                                                d="M50,0 C150,50 350,50 450,0 C500,100 500,400 450,500 C350,450 150,450 50,500 C0,400 0,100 50,0 Z"
-                                            />
-                                        </clipPath>
-                                        <image
-                                            href={leader.image}
-                                            width="500"
-                                            height="500"
-                                            clipPath={`url(#clip-path-${leader.id})`}
-                                            preserveAspectRatio="xMidYMid slice"
-                                        />
-                                    </svg>
+                            {/* Image Section with Circular Shape */}
+                            <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] p-8">
+                                <div className="relative w-full h-full overflow-hidden border-4 border-blue-400 rounded-full">
+                                    <img
+                                        src={leader.image}
+                                        alt={leader.name}
+                                        className="object-cover w-full h-full"
+                                    />
                                 </div>
                             </div>
 

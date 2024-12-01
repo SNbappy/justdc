@@ -75,7 +75,7 @@ const WhyJoinSection = () => {
 
     return (
         <div
-            className="relative flex flex-col items-center justify-start min-h-screen pt-20 overflow-hidden lg:pt-12 bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50"
+            className="relative flex flex-col items-center justify-start min-h-screen pt-12 overflow-hidden lg:pt-12 lg:pb-12 bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50"
         >
             {/* Animated Background Circles */}
             <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>

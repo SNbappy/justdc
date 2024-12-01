@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import image from "../../images/WhoCanJoin.jpg";
 
 const JoinSection = () => {
     const sectionRef = useRef(null);
@@ -20,7 +21,6 @@ const JoinSection = () => {
         }),
         hover: {
             scale: 1.05,
-            rotate: 2, // Slight rotation for depth
             transition: {
                 duration: 0.3,
                 type: "spring",
@@ -38,25 +38,9 @@ const JoinSection = () => {
         },
         {
             id: 2,
-            title: "🌟 Why join JUSTDC?",
-            description: `
-        * Boost your confidence and communication skills
-        * Engage in exciting debates and discussions
-        * Meet like-minded individuals and build lifelong friendships
-        * Represent JUST in inter-university and World debate competitions`,
-            gradient: "from-purple-500 to-pink-500",
-        },
-        {
-            id: 3,
             title: "📅 How to Apply?",
-            description: `
-        1. Fill out the registration form (available at the JUSTDC Office)
-        2. Join our introductory session on campus to learn more`,
+            description: `1. Fill out the registration form (available at the JUSTDC Office)\n2. Join our introductory session on campus to learn more`,
             gradient: "from-teal-500 to-cyan-500",
-            link: {
-                text: "Register Now",
-                href: "#",
-            },
         },
     ];
 
@@ -66,34 +50,47 @@ const JoinSection = () => {
             className="relative px-6 py-16 overflow-hidden bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50 lg:px-20"
         >
             {/* Animated Background Circles */}
-            <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
-            <div className="absolute rounded-full -bottom-20 -right-10 w-96 h-96 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
+            <div className="absolute z-0 rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
+            <div className="absolute z-0 rounded-full -bottom-20 -right-10 w-96 h-96 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
 
-            <div className="mx-auto max-w-7xl">
-                {/* Heading */}
-                <div className="space-y-4 text-center">
-                    <motion.h2
-                        className="text-4xl font-extrabold tracking-tight text-gray-800"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 1 }}
-                    >
-                        Join the Debate Revolution!
-                    </motion.h2>
-                    <motion.p
-                        className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 1, delay: 0.3 }}
-                    >
-                        Become part of the most dynamic and impactful debate club on campus.
-                        Ready to boost your confidence, enhance your communication skills,
-                        and make lifelong connections? Join us today!
-                    </motion.p>
-                </div>
+            {/* Title and Introductory Text */}
+            <div className="relative z-10 space-y-6 text-center">
+                <motion.h2
+                    className="text-4xl font-extrabold tracking-tight text-gray-800"
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 1 }}
+                >
+                    Ready to Take the Stage?
+                </motion.h2>
+                <motion.p
+                    className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 1, delay: 0.3 }}
+                >
+                    Join the JUST Debate Club and unlock your potential! Whether you're looking to enhance your public speaking skills, engage in thought-provoking discussions, or simply meet like-minded individuals, we’ve got a place for you.
+                </motion.p>
+            </div>
 
-                {/* Cards Section */}
-                <div className="relative mt-16 space-y-8">
+            {/* Content Section */}
+            <div className="relative z-10 flex flex-col items-center gap-12 mt-10 lg:flex-row max-w-7xl">
+                {/* Left Image Section */}
+                <motion.div
+                    className="w-full overflow-hidden shadow-lg lg:w-1/2 rounded-2xl"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 1 }}
+                >
+                    <img
+                        src={image}
+                        alt="Join JUSTDC"
+                        className="object-cover w-full h-full"
+                    />
+                </motion.div>
+
+                {/* Right Cards Section */}
+                <div className="flex flex-col w-full gap-8 lg:w-1/2">
                     {cards.map((card, index) => (
                         <motion.div
                             key={card.id}
@@ -128,21 +125,9 @@ const JoinSection = () => {
                                 }}
                             />
                             <h3 className="text-2xl font-semibold">{card.title}</h3>
-                            {card.link ? (
-                                <>
-                                    <p className="mt-4 text-lg">{card.description}</p>
-                                    <a
-                                        href={card.link.href}
-                                        className="inline-block px-6 py-2 mt-6 font-semibold text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700"
-                                    >
-                                        {card.link.text}
-                                    </a>
-                                </>
-                            ) : (
-                                <ul className="mt-4 text-lg whitespace-pre-line list-disc list-inside">
-                                    {card.description}
-                                </ul>
-                            )}
+                            <ul className="mt-4 text-lg whitespace-pre-line list-disc list-inside">
+                                {card.description}
+                            </ul>
                         </motion.div>
                     ))}
                 </div>

@@ -25,7 +25,7 @@ const AchievementSlider = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-[80vh] lg:h-screen md:h-screen">
             {/* Slider */}
             <div className="absolute inset-0 overflow-hidden">
                 <div
@@ -74,14 +74,15 @@ const AchievementSlider = () => {
                         key={index}
                         onClick={() => setCurrentIndex(index)}
                         className={`h-3 w-3 rounded-full ${currentIndex === index
-                            ? "bg-blue-600"
-                            : "bg-gray-300 hover:bg-gray-400"
+                                ? "bg-blue-600"
+                                : "bg-gray-300 hover:bg-gray-400"
                             }`}
                     ></button>
                 ))}
             </div>
         </div>
     );
+
 };
 
 export default AchievementSlider;

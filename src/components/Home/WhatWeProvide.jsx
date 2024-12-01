@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import image from "../../images/slide-1.jpg";  // Adjust to your image source
+import image from "../../images/whatWeProvide.jpg"; // Adjust to your image source
 
 const WhatWeProvide = () => {
     const sectionRef = useRef(null);
@@ -29,136 +29,103 @@ const WhatWeProvide = () => {
         },
     };
 
-    const cards = [
-        {
-            id: 1,
-            title: "Skill Development",
-            description:
-                "Improve your public speaking, critical thinking, and argumentation skills.",
-            image: image,
-            gradient: "from-blue-500 to-blue-300",
-        },
-        {
-            id: 2,
-            title: "Team Competitions",
-            description:
-                "Collaborate with others in exciting inter-university and international competitions.",
-            image: image,
-            gradient: "from-purple-500 to-pink-500",
-        },
-        {
-            id: 3,
-            title: "Leadership Opportunities",
-            description:
-                "Take on leadership roles within the club and represent JUST at major events.",
-            image: image,
-            gradient: "from-teal-500 to-cyan-500",
-        },
-        {
-            id: 4,
-            title: "Networking Events",
-            description:
-                "Meet like-minded individuals, debate enthusiasts, and professionals.",
-            image: image,
-            gradient: "from-green-500 to-teal-600",
-        },
-        {
-            id: 5,
-            title: "Public Speaking Practice",
-            description:
-                "Gain confidence and experience in public speaking through regular practice sessions.",
-            image: image,
-            gradient: "from-orange-500 to-yellow-600",
-        },
-        {
-            id: 6,
-            title: "Intellectual Growth",
-            description:
-                "Engage in discussions on diverse topics, broadening your knowledge and perspective.",
-            image: image,
-            gradient: "from-red-500 to-pink-500",
-        },
+    const pointsCard1 = [
+        "Enhance public speaking skills.",
+        "Learn effective argumentation.",
+        "Participate in debates.",
+    ];
+    const pointsCard2 = [
+        "Connect with like-minded peers.",
+        "Develop critical thinking.",
+        "Experience leadership growth.",
     ];
 
     return (
         <div
             ref={sectionRef}
-            className="relative px-6 py-16 overflow-hidden bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-50 lg:px-20"
+            className="relative px-6 py-16 overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-50 lg:px-20"
         >
-            {/* Animated Gradient Circles (Replicating Join Section Background) */}
-            <div className="absolute rounded-full -top-20 -left-10 w-96 h-96 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
-            <div className="absolute rounded-full -bottom-20 -right-10 w-96 h-96 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
+            {/* Animated Gradient Circles */}
+            <div className="absolute z-0 rounded-full -top-20 -left-10 w-72 h-72 bg-gradient-to-r from-blue-300 to-purple-300 opacity-30 blur-2xl animate-pulse"></div>
+            <div className="absolute z-0 rounded-full -bottom-20 -right-10 w-72 h-72 bg-gradient-to-r from-pink-300 to-yellow-300 opacity-30 blur-2xl animate-pulse"></div>
 
-            <div className="mx-auto max-w-7xl">
-                {/* Heading */}
-                <div className="space-y-4 text-center">
-                    <motion.h2
-                        className="text-4xl font-extrabold tracking-tight text-gray-800"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 1 }}
+            {/* Title and Introductory Text */}
+            <div className="relative z-10 mb-12 space-y-4 text-center">
+                <motion.h2
+                    className="text-4xl font-extrabold tracking-tight text-gray-800"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 1 }}
+                >
+                    Unlock Your Potential
+                </motion.h2>
+                <motion.p
+                    className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 1, delay: 0.3 }}
+                >
+                    Dive into a world of endless possibilities. Whether it's enhancing your communication skills, building meaningful connections, or stepping into leadership roles, our club provides the perfect platform to thrive and grow.
+                </motion.p>
+            </div>
+
+            <div className="relative z-10 flex flex-col items-center gap-12 mx-auto max-w-7xl lg:flex-row">
+                {/* Left Image Section */}
+                <motion.div
+                    className="w-full overflow-hidden shadow-lg lg:w-1/2 rounded-2xl"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 1 }}
+                >
+                    <img
+                        src={image}
+                        alt="What We Provide"
+                        className="object-cover w-full h-full"
+                    />
+                </motion.div>
+
+                {/* Right Cards Section */}
+                <motion.div
+                    className="flex flex-col w-full gap-8 lg:w-1/2"
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                >
+                    {/* Card 1 */}
+                    <motion.div
+                        className="flex flex-col gap-4 p-8 text-white shadow-lg bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl"
+                        whileHover="hover"
+                        custom={0}
+                        variants={cardVariants}
                     >
-                        What We Provide
-                    </motion.h2>
-                    <motion.p
-                        className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 1, delay: 0.3 }}
+                        <h3 className="text-2xl font-semibold">Skill Development</h3>
+                        <ul className="space-y-2">
+                            {pointsCard1.map((point, index) => (
+                                <li key={index} className="flex items-center gap-2">
+                                    <span className="w-3 h-3 bg-white rounded-full"></span>
+                                    {point}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+
+                    {/* Card 2 */}
+                    <motion.div
+                        className="flex flex-col gap-4 p-8 text-white shadow-lg bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl"
+                        whileHover="hover"
+                        custom={1}
+                        variants={cardVariants}
                     >
-                        Join our debate club and experience a wide range of opportunities to enhance your skills, engage in exciting debates, and grow as an intellectual. Here's what we offer!
-                    </motion.p>
-                </div>
-
-                {/* Cards Section */}
-                <div className="grid grid-cols-1 gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3">
-                    {cards.map((card, index) => (
-                        <motion.div
-                            key={card.id}
-                            className={`relative p-8 shadow-xl rounded-xl bg-gradient-to-r ${card.gradient} text-white overflow-hidden flex flex-col items-center`}
-                            initial="hidden"
-                            animate={isInView ? "visible" : "hidden"}
-                            whileHover="hover"
-                            custom={index}
-                            variants={cardVariants}
-                        >
-                            {/* Background Decoration */}
-                            <motion.div
-                                className="absolute w-40 h-40 bg-white rounded-full opacity-10 -top-10 -left-10"
-                                animate={{
-                                    scale: [1, 1.2, 1],
-                                    rotate: [0, 15, -15, 0],
-                                }}
-                                transition={{
-                                    duration: 6,
-                                    repeat: Infinity,
-                                }}
-                            />
-                            <motion.div
-                                className="absolute w-40 h-40 bg-white rounded-full opacity-10 -bottom-10 -right-10"
-                                animate={{
-                                    scale: [1, 1.3, 1],
-                                    rotate: [0, -15, 15, 0],
-                                }}
-                                transition={{
-                                    duration: 6,
-                                    repeat: Infinity,
-                                }}
-                            />
-                            {/* Card Image */}
-                            <div className="w-full h-40 mb-4 overflow-hidden rounded-lg">
-                                <img
-                                    src={card.image}
-                                    alt={card.title}
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
-
-                            <h3 className="text-2xl font-semibold">{card.title}</h3>
-                            <p className="mt-4 text-lg">{card.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
+                        <h3 className="text-2xl font-semibold">Networking and Leadership</h3>
+                        <ul className="space-y-2">
+                            {pointsCard2.map((point, index) => (
+                                <li key={index} className="flex items-center gap-2">
+                                    <span className="w-3 h-3 bg-white rounded-full"></span>
+                                    {point}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                </motion.div>
             </div>
         </div>
     );

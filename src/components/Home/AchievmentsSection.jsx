@@ -65,7 +65,7 @@ const AchievementsSection = () => {
     });
 
     return (
-        <div className="px-6 mt-[-100px] lg:mt-0 lg:pt-20 lg:px-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-black py-20">
+        <div className="px-6 py-20 lg:mt-0 lg:pt-20 lg:px-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-black">
             <div className="mx-auto space-y-16 max-w-7xl">
                 {/* Heading */}
                 <div className="space-y-6 text-center text-white">

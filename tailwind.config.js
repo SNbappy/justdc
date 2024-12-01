@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,10 +6,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        handwriting: ["'Dancing Script', cursive"], // Add a handwriting font
+        handwriting: ["'Dancing Script', cursive"],
         sans: ["Poppins", "sans-serif"],
       },
     },
   },
-  plugins: [require("daisyui")],
-}
+  plugins: [
+    require("daisyui"),
+    require("@tailwindcss/aspect-ratio"), // Add this plugin
+  ],
+};
